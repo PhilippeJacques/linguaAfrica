@@ -1,0 +1,62 @@
+:root {
+    --gold: #d4af37;
+    --dark: #0f1108;
+}
+
+body {
+    font-family: 'Sora', sans-serif;
+    background-color: var(--dark);
+}
+
+/* Custom Cursor */
+.cursor {
+    width: 15px;
+    height: 15px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-difference: difference;
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animated Pattern Background */
+.pattern-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 200%; height: 200%;
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Pattern subtil */
+    background-color: #1a1c12;
+    filter: invert(1);
+    z-index: 0;
+    animation: moveBg 60s linear infinite;
+}
+
+@keyframes moveBg {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-50%, -50%); }
+}
+
+/* Smooth Scroll */
+html { scroll-behavior: smooth; }
+
+/* Cards hover */
+.lang-card {
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.lang-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Animation de flottaison pour le téléphone */
+.mockup-phone {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+#showcase {
+    background: radial-gradient(circle at center, #1a1c12 0%, #0f1108 100%);
+}

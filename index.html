@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinguaAfrica | Connectez-vous à vos racines</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@sanity/client@6.1.10/dist/index.browser.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0f1108] text-[#f4f1ea] overflow-x-hidden">
+
+    <div class="cursor hidden md:block"></div>
+
+    <nav class="fixed w-full z-50 px-6 py-6 flex justify-between items-center mix-blend-difference">
+        <div class="text-2xl font-extrabold tracking-tighter uppercase">LinguaAfrica</div>
+        
+        <div class="flex items-center space-x-6">
+            <div class="flex bg-white/5 rounded-full p-1 border border-white/10 text-[10px] font-bold">
+                <button onclick="changeLang('fr')" id="btn-fr" class="px-3 py-1 rounded-full transition-all bg-[#d4af37] text-black">FR</button>
+                <button onclick="changeLang('en')" id="btn-en" class="px-3 py-1 rounded-full transition-all">EN</button>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest">
+                <a href="#languages" class="hover:text-[#d4af37] transition nav-link" data-key="navLang">Langues</a>
+                <a href="#showcase" class="hover:text-[#d4af37] transition nav-link" data-key="navApp">L'App</a>
+            </div>
+
+            <a href="https://apps.apple.com/fr/app/linguaafrica/id6755738847" target="_blank" 
+               class="bg-[#d4af37] text-black px-6 py-2 rounded-full text-xs font-bold hover:scale-105 transition uppercase" data-key="navBtn">
+               Installer
+            </a>
+        </div>
+    </nav>
+
+<section class="relative min-h-screen flex items-center justify-center text-center px-4 overflow-hidden">
+    <!-- vidéo de fond (sans poster) -->
+    <video autoplay muted loop playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover z-0" aria-hidden="true" role="presentation">
+        <source src="videos/video.mp4" type="video/mp4">
+        <!-- fallback si le navigateur ne supporte pas la vidéo -->
+    </video>
+
+    <!-- pattern ou overlay -->
+    <div class="pattern-bg opacity-20 absolute inset-0 z-10"></div>
+    <div class="absolute inset-0 bg-black/40 z-15 pointer-events-none"></div>
+
+    <!-- contenu au-dessus de la vidéo -->
+    <div class="z-20 hero-content">
+        <h1 class="text-5xl md:text-8xl font-extrabold mb-6 leading-[1.1] uppercase tracking-tighter">
+            APPRENEZ LES <span class="text-[#d4af37]">LANGUES AFRICAINES.</span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 mb-10 leading-relaxed">
+            Plus qu'une langue, une immersion. Connectez-vous à vos racines avec l'expérience d'apprentissage la plus moderne du continent.
+        </p>
+        <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+            <a href="https://apps.apple.com/fr/app/linguaafrica/id6755738847" target="_blank" 
+               class="bg-white text-black px-10 py-4 rounded-2xl font-bold flex items-center gap-3 hover:bg-[#d4af37] transition-all duration-300 group">
+               <span>App Store</span>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.afrolingo.talk&hl=fr" target="_blank" 
+               class="border border-white/20 px-10 py-4 rounded-2xl font-bold hover:bg-white/5 transition-all">
+                Google Play
+            </a>
+        </div>
+    </div>
+</section>
+
+    <section id="languages" class="py-32 px-8 bg-[#16180e]">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-20 text-center uppercase tracking-tight" data-key="secLangTitle">Explorez nos Langues</h2>
+            <div id="languages-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                </div>
+        </div>
+    </section>
+
+    <section id="showcase" class="py-32 flex flex-col items-center justify-center bg-[#0f1108] overflow-hidden relative">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#d4af37] opacity-10 blur-[120px] rounded-full"></div>
+
+        <div class="phone-container relative z-10 px-4">
+            <div class="mockup-phone relative border-[8px] border-[#2a2d1f] rounded-[3rem] w-[320px] h-[640px] bg-[#f4f1ea] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col items-center justify-between py-12">
+                
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#2a2d1f] rounded-b-3xl"></div>
+
+                <div class="w-48 h-48 bg-[#fdfaf3] rounded-[2.5rem] shadow-xl flex items-center justify-center p-4 border border-[#d4af37]/20 mt-10 transition-transform duration-700 hover:scale-105">
+                    <img src="app-icon.png" alt="LinguaAfrica App Icon" class="w-full h-full object-contain rounded-3xl" onerror="this.src='https://via.placeholder.com/200?text=Sankofa'">
+                </div>
+
+                <div class="w-full px-6 space-y-4">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="h-16 bg-[#d4af37]/10 rounded-2xl border border-[#d4af37]/20"></div>
+                        <div class="h-16 bg-[#d4af37]/10 rounded-2xl border border-[#d4af37]/20"></div>
+                        <div class="h-16 bg-[#d4af37]/10 rounded-2xl border border-[#d4af37]/20"></div>
+                        <div class="h-16 bg-[#d4af37]/10 rounded-2xl border border-[#d4af37]/20"></div>
+                    </div>
+                    <div class="flex justify-center space-x-8 pt-6 opacity-30">
+                        <div class="w-3 h-3 border-2 border-black rotate-45"></div>
+                        <div class="w-3 h-3 border-2 border-black rounded-full"></div>
+                        <div class="w-3 h-3 border-2 border-black rounded-sm"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center z-10 mt-12 px-6">
+            <h2 class="text-4xl md:text-6xl font-bold uppercase tracking-tighter" data-key="secAppTitle">L'Afrique dans votre poche.</h2>
+            <p class="text-gray-500 mt-4 max-w-md mx-auto italic">"Apprendre d'où l'on vient pour savoir où l'on va."</p>
+        </div>
+    </section>
+
+    <footer class="py-20 text-center border-t border-white/5 bg-[#0f1108]">
+        <p class="text-gray-600 text-sm tracking-widest uppercase">© 2026 LinguaAfrica. Made for the continent.</p>
+                <p class="text-gray-300 text-sm tracking-widest uppercase">CONTACT: Philippejacques@afrolingo.org</p>
+
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
